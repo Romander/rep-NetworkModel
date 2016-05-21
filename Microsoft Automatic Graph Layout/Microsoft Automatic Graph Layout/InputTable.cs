@@ -11,5 +11,10 @@
         public string Operation { get; set; }
         public string BeforeOperations { get; set; }
         public int Time { get; set; }
+
+        public override string ToString()
+        {
+            return Operation + " " + BeforeOperations + " " + Time;
+        }
     }
 }

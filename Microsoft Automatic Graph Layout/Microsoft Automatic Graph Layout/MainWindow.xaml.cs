@@ -11,6 +11,7 @@ namespace Microsoft_Automatic_Graph_Layout
 {
     public partial class MainWindow
     {
+         
         private string Filename;
         public List<InputTable> result;
 
@@ -57,6 +58,12 @@ namespace Microsoft_Automatic_Graph_Layout
             ReadTable();
             SetGrid();
         }
+
+        private void MenuSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            WriteTable();
+        }
+
         private void MenuExit_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -186,6 +193,24 @@ namespace Microsoft_Automatic_Graph_Layout
             catch (Exception ex)
             {
                 MessageBox.Show("Could not read the file");
+            }
+        }
+
+        private void WriteTable()
+        {
+            try
+            {
+                using (var file = new StreamWriter(Filename))
+                {
+                    foreach (var item in result)
+                    {
+                        file.WriteLine(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not write the file");
             }
         }
 

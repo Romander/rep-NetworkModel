@@ -15,6 +15,7 @@
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Open File" Click="MenuOpen_OnClick"/>
+                <MenuItem Header="Save File" Click="MenuSave_OnClick"/>
             </MenuItem>
             <MenuItem Header="Exit" Click="MenuExit_OnClick"/>
         </Menu>
