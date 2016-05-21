@@ -1,0 +1,19 @@
+﻿<Window x:Class="Microsoft_Automatic_Graph_Layout.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Microsoft_Automatic_Graph_Layout"
+        mc:Ignorable="d"
+        Title="Add" Height="80" Width="480">
+    <Grid>
+        <WrapPanel>
+            <TextBox Name="OperationBox" Height="25" Width="100" Margin="10" ToolTip="Operation"/>
+            <TextBox Name="BeforeOperationBox" Height="25" Width="100" Margin="10"></TextBox>
+            <TextBox Name="TimeBox" Height="25" Width="100" Margin="10"></TextBox>
+            <Button Height="25" Width="100" Click="ButtonBase_OnClick">
+                <TextBlock FontSize="15">Add</TextBlock>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Window>
