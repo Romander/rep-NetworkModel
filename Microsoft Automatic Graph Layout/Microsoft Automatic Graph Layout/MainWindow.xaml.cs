@@ -82,7 +82,6 @@ namespace Microsoft_Automatic_Graph_Layout
         {
             WriteTable();
         }
-
         private void MenuExit_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -100,6 +99,7 @@ namespace Microsoft_Automatic_Graph_Layout
                 Filename = ofd.FileName;
             }
         }
+
         private void CreateGraph()
         {
             var graph = new Graph { LayoutAlgorithmSettings = new RankingLayoutSettings() };
@@ -174,7 +174,6 @@ namespace Microsoft_Automatic_Graph_Layout
 
                     if (!CheckBefore(input.Operation))
                     {
-                        if (last) newCount++;
                         if (ContainBefore(netGraph, input.BeforeOperations) != "not contain")
                         {
                             count = int.Parse(ContainBefore(netGraph, input.BeforeOperations));
@@ -200,7 +199,6 @@ namespace Microsoft_Automatic_Graph_Layout
                     {
                         graph.AddEdge(edge.vertex1, edge.edgeLabel, edge.vertex2);
                     }
-
                 gViewer.Graph = graph;
             }
 
@@ -219,7 +217,6 @@ namespace Microsoft_Automatic_Graph_Layout
                 MessageBox.Show("Could not read the file");
             }
         }
-
         private void WriteTable()
         {
             try
