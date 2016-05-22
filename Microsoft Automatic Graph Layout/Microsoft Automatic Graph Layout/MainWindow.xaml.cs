@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using Microsoft.Msagl.Drawing;
 using Microsoft.Msagl.Prototype.Ranking;
 using Microsoft.Win32;
@@ -13,7 +15,7 @@ namespace Microsoft_Automatic_Graph_Layout
     {
          
         private string Filename;
-        public List<InputTable> result;
+        public List<InputTable> result = new List<InputTable>();
 
         public MainWindow()
         {
@@ -36,13 +38,36 @@ namespace Microsoft_Automatic_Graph_Layout
                 CreateGraph();
             }
         }
+
         private void ButtonChange_OnClick(object sender, RoutedEventArgs e)
         {
-           
+            if  (grid.SelectedItem != null)
+            {
+                InputTable item = grid.SelectedItem as InputTable;
+                var index = result.IndexOf(item);
+                result.Remove(item);
+                result.Insert(index, item);
+                CreateGraph();
+            }
+            else
+            {
+                MessageBox.Show("Choose item from grid");
+            }
         }
+
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-          
+            if (grid.SelectedIndex >= 0)
+            {
+                InputTable customer = grid.SelectedItem as InputTable;
+                result.Remove(customer);
+                SetGrid();
+                CreateGraph();
+            }
+            else
+            {
+                MessageBox.Show("Choose item from grid");
+            }
         }
 
         private void MenuOpen_OnClick(object sender, RoutedEventArgs e)
@@ -78,8 +103,9 @@ namespace Microsoft_Automatic_Graph_Layout
         private void CreateGraph()
         {
             var graph = new Graph { LayoutAlgorithmSettings = new RankingLayoutSettings() };
-            SetGrid();
 
+            SetGrid();
+           
             List<Edge> netGraph = new List<Edge>();
 
             var count = 0;
@@ -184,7 +210,7 @@ namespace Microsoft_Automatic_Graph_Layout
                 var lines = File.ReadAllLines(Filename);
                 result.AddRange(lines.Select(t => t.Split(' ')).Select(splitLine => new InputTable(splitLine[0], splitLine[1], int.Parse(splitLine[2]))));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Could not read the file");
             }
@@ -202,7 +228,7 @@ namespace Microsoft_Automatic_Graph_Layout
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Could not write the file");
             }
