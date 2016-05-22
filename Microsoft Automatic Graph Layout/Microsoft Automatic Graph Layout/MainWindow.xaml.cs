@@ -193,13 +193,17 @@ namespace Microsoft_Automatic_Graph_Layout
                 }
             }
 
-            if (netGraph != null)
-                foreach (var edge in netGraph)
-                {
-                    graph.AddEdge(edge.vertex1, edge.edgeLabel, edge.vertex2);
-                }
- 
-            gViewer.Graph = graph;
+            if (netGraph.Any())
+            {
+                if (netGraph != null)
+                    foreach (var edge in netGraph)
+                    {
+                        graph.AddEdge(edge.vertex1, edge.edgeLabel, edge.vertex2);
+                    }
+
+                gViewer.Graph = graph;
+            }
+
         }
 
         private void ReadTable()
@@ -220,12 +224,30 @@ namespace Microsoft_Automatic_Graph_Layout
         {
             try
             {
-                using (var file = new StreamWriter(Filename))
+                if (Filename != null)
                 {
-                    foreach (var item in result)
+                    using (var file = new StreamWriter(Filename))
                     {
-                        file.WriteLine(item);
+                        foreach (var item in result)
+                        {
+                            file.WriteLine(item);
+                        }
                     }
+                }
+                else
+                {
+                    var saveFileDialog = new SaveFileDialog { Filter = "Network Table (*.netab)|*.netab" };
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        using (var file = File.AppendText(saveFileDialog.FileName))
+                        {
+                            foreach (var item in result)
+                            {
+                                file.WriteLine(item);
+                            }
+                        }
+                    }
+
                 }
             }
             catch (Exception)
