@@ -19,15 +19,15 @@
             </MenuItem>
             <MenuItem Header="Exit" Click="MenuExit_OnClick"/>
         </Menu>
-        <DataGrid x:Name="grid" Margin="10, 30, 10, 0" Loaded="grid_Loaded" Grid.Row="0" IsReadOnly="True"/>
+        <DataGrid Grid.Row="0" x:Name="grid" Margin="10, 30, 10, 0" Loaded="grid_Loaded" />
         <WrapPanel Grid.Row="1">
-            <Button Width="100" Height="30" Margin="10" x:Name="buttonAdd" Click="ButtonAdd_OnClick">
+            <Button Width="100" Height="30" Margin="10" x:Name="buttonAdd" Click="ButtonAdd_OnClick" >
                 <TextBlock FontSize="18">Add</TextBlock>
             </Button>
-            <Button Width="100" Height="30" Margin="10" IsEnabled="False"  x:Name="buttonChange" Click="ButtonChange_OnClick">
-                <TextBlock FontSize="18">Change</TextBlock>
+            <Button Width="100" Height="30" Margin="10" x:Name="buttonChange" Click="ButtonChange_OnClick">
+                <TextBlock FontSize="18">Update row</TextBlock>
             </Button>
-            <Button Width="100" Height="30" Margin="10" IsEnabled="False" x:Name="buttonDelete" Click="ButtonDelete_OnClick">
+            <Button Width="100" Height="30" Margin="10" x:Name="buttonDelete" Click="ButtonDelete_OnClick">
                 <TextBlock FontSize="18">Delete</TextBlock>
             </Button>
         </WrapPanel>
