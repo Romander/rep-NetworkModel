@@ -19,19 +19,16 @@
             </MenuItem>
             <MenuItem Header="Exit" Click="MenuExit_OnClick"/>
         </Menu>
-        <DataGrid x:Name="grid" Margin="10, 30, 10, 0" Loaded="grid_Loaded" Grid.Row="0"/>
+        <DataGrid x:Name="grid" Margin="10, 30, 10, 0" Loaded="grid_Loaded" Grid.Row="0" IsReadOnly="True"/>
         <WrapPanel Grid.Row="1">
-            <Button Width="100" Height="50" Margin="10" x:Name="buttonAdd" Click="ButtonAdd_OnClick">
-                <TextBlock FontSize="20">Add</TextBlock>
+            <Button Width="100" Height="30" Margin="10" x:Name="buttonAdd" Click="ButtonAdd_OnClick">
+                <TextBlock FontSize="18">Add</TextBlock>
             </Button>
-            <Button Width="100" Height="50" Margin="10" IsEnabled="False"  x:Name="buttonChange" Click="ButtonChange_OnClick">
-                <TextBlock FontSize="20">Change</TextBlock>
+            <Button Width="100" Height="30" Margin="10" IsEnabled="False"  x:Name="buttonChange" Click="ButtonChange_OnClick">
+                <TextBlock FontSize="18">Change</TextBlock>
             </Button>
-            <Button Width="100" Height="50" Margin="10" IsEnabled="False" x:Name="buttonDelete" Click="ButtonDelete_OnClick">
-                <TextBlock FontSize="20">Delete</TextBlock>
-            </Button>
-            <Button Width="100" Height="50" Margin="10" x:Name="buttonRestruct" Click="ButtonRestruct_OnClick">
-                <TextBlock FontSize="20">Restruct </TextBlock>
+            <Button Width="100" Height="30" Margin="10" IsEnabled="False" x:Name="buttonDelete" Click="ButtonDelete_OnClick">
+                <TextBlock FontSize="18">Delete</TextBlock>
             </Button>
         </WrapPanel>
         <WindowsFormsHost Name="windowsFormsHost1" Margin="0,34,0,0" Grid.Row="2">

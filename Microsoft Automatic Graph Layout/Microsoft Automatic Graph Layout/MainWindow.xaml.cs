@@ -17,10 +17,7 @@ namespace Microsoft_Automatic_Graph_Layout
 
         public MainWindow()
         {
-            SetFilename();
-            ReadTable();
-            InitializeComponent();
-            CreateGraph();
+            InitializeComponent();    
         }
 
         private void grid_Loaded(object sender, RoutedEventArgs e)
@@ -30,7 +27,7 @@ namespace Microsoft_Automatic_Graph_Layout
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            AddWindow addWindow = new AddWindow();
+            var addWindow = new AddWindow();
             addWindow.ShowDialog();
             if (addWindow.item.Time != -1)
             {
@@ -47,16 +44,13 @@ namespace Microsoft_Automatic_Graph_Layout
         {
           
         }
-        private void ButtonRestruct_OnClick(object sender, RoutedEventArgs e)
-        {
-           
-        }
 
         private void MenuOpen_OnClick(object sender, RoutedEventArgs e)
         {
             SetFilename();
             ReadTable();
             SetGrid();
+            CreateGraph();
         }
 
         private void MenuSave_OnClick(object sender, RoutedEventArgs e)
